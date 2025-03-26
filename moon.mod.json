@@ -1,0 +1,14 @@
+{
+  "name": "luna-plot",
+  "version": "0.1.0",
+  "deps": {},
+  "readme": "README.md",
+  "repository": "",
+  "license": "Apache-2.0",
+  "keywords": [
+    "termianl",
+    "plot"
+  ],
+  "description": "A pre-test lib for luna-flow to show the graph in termianl.",
+  "source": "src"
+}

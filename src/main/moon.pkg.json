@@ -1,0 +1,19 @@
+{
+  "is-main": true,
+  "import": [
+    "luna-plot/lib",
+    "moonbitlang/x/sys",
+    {
+      "path": "Kaida-Amethyst/math",
+      "alias": "math"
+    }
+  ],
+  "link": {
+    "native": {
+      "flags": [
+        "-cc",
+        "/D/zig/zig.exe cc -target riscv64-linux-musl -O2 -static"
+      ]
+    }
+  }
+}
