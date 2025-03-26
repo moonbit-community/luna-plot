@@ -29,5 +29,5 @@ moon add moonbitlang/x
 ```
 ## 示例
 具体代码详见src/main/main.mbt。以下给出图片示例：
-![函数图像示例](example1.png)
-![函数图像示例](example2.png)
+![函数图像示例](./example1.png)
+![函数图像示例](./example2.png)
