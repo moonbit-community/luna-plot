@@ -2,7 +2,11 @@
 pub fn central_print(width : Int, str : String, p : Int, q : Int) -> String {
   let real_len = real_len(str)
   let offset = width * p / q - real_len / 2
-  "\r" + mul_str(offset, " ") + str
+  // let mut res = str
+  // if real_len > width {
+  //   res = str_len_slice(str, 0, width)
+  // }
+  mul_str(offset, " ") + str
 }
 
 ///|
@@ -13,8 +17,6 @@ pub fn back_print(
   p : Int,
   q : Int
 ) -> String {
-  let mut res = ""
-  let l = real_len(str)
   let front_str = central_print(
     width,
     {
@@ -29,20 +31,17 @@ pub fn back_print(
     p,
     q,
   )
+  let l = real_len(front_str)
+  let offset = width / q * p - l / 2
   // old-version
-  res = background +
-    front_str +
-    "\r" +
-    str_len_slice(
-      background,
-      0,
-      // count_trim(front_str) * 2,
-      width * 2 * p / q - l,
-      //  130,
-    )
-  // let offset = width * p / q - l / 2
-  // res = background + mul_str(offset, "\b") + str
-  res
+  background + "\r\x1b[\{offset*2}C" + str
+
+  // background +
+  // // "\r" +
+  // front_str +
+  // "\r" +
+  // str_len_slice(background, 0, 2 * (width * 2 * p / q - l))
+
 }
 
 ///|
@@ -80,16 +79,14 @@ pub fn str_len_slice(str : String, start : Int, len : Int) -> String {
 }
 
 ///|
+// pub fn real_len(str : String) -> Int {
 pub fn real_len(str : String) -> Int {
   let mut real_len = 0
   for i in str {
     let code = i.to_int()
-    if 0xFF01 <= code ||
-      code <= 0xFF5E ||
-      0x4E00 <= code ||
-      code <= 0x9FFF ||
-      0x3000 <= code ||
-      code <= 0x303F {
+    if (0xFF01 <= code && code <= 0xFF5E) || // 全角ASCII字符
+      (0x4E00 <= code && code <= 0x9FFF) || // CJK统一汉字
+      (0x3000 <= code && code <= 0x303F) { // CJK符号和标点
       real_len = real_len + 2
     } else {
       real_len = real_len + 1
@@ -97,6 +94,8 @@ pub fn real_len(str : String) -> Int {
   }
   real_len
 }
+//   real_len
+// }
 
 ///|
 pub fn mul_str(times : Int, str : String) -> String {
