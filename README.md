@@ -1,4 +1,5 @@
 # Luna Plot
+[简体中文](README.md) | [English](README_EN.md)
 
 Luna Plot 是一个基于 MoonBit 的数据可视化库，专注于提供简洁、高效的图表、图形、视图绘制功能。
 
@@ -35,7 +36,7 @@ moon add moonbitlang/x
 单函数绘制（最基础
 ![多函数图像示例](asset/example2.png)
 多函数绘制
-![3d动画图像示例](asset/example3.png)
+![3d动画图像示例](asset/demo.gif)
 3d视图与anim
 ![3d动画嵌入示例](asset/example4.png)
 支持图幅嵌入

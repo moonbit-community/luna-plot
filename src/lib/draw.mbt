@@ -41,3 +41,50 @@ pub fn spine_effects(wid : Int, n : Int) -> String {
   }
   res
 }
+
+///|
+pub fn set_color(r : Int, g : Int, b : Int) -> Int {
+  let r_ : Int = min_(max_(r, 0), 255) / 43
+  let g_ : Int = min_(max_(g, 0), 255) / 43
+  let b_ : Int = min_(max_(b, 0), 255) / 43
+  r_ * 36 + g_ * 6 + b_ + 16
+}
+
+///|
+pub fn set_gray(n : Int) -> Int {
+  let g : Int = min_(max_(n, 0), 255) / 11
+  g + 232
+}
+
+///|
+const Reset = "\x1b[0m"
+
+///|
+const Bold = "\x1b[1m"
+
+///|
+const Underline = "\x1b[4m"
+
+///|
+const Double_Underline = "\x1b[21m"
+
+///|
+const Deleteline = "\x1b[9m"
+
+///|
+const Blink = "\x1b[5m"
+
+///|
+const Reverse = "\x1b[7m"
+
+///|
+const Hidden = "\x1b[8m"
+
+///|
+const Upline = "\x1b[53m"
+
+///|
+const Italic = "\x1b[3m"
+
+///|
+const Fade = "\x1b[2m"

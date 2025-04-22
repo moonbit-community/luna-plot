@@ -1,12 +1,20 @@
 ///|
 pub fn central_print(width : Int, str : String, p : Int, q : Int) -> String {
-  let real_len = real_len(str)
+  let _str = {
+    let mut res = ""
+    for s in str {
+      if s != '\n' {
+        res = res + "\{s}"
+      }
+      if s == '\r' {
+        res = ""
+      }
+    }
+    res
+  }
+  let real_len = real_len(_str)
   let offset = width * p / q - real_len / 2
-  // let mut res = str
-  // if real_len > width {
-  //   res = str_len_slice(str, 0, width)
-  // }
-  mul_str(offset, " ") + str
+  "\r\x1b[\{offset}C" + _str
 }
 
 ///|
@@ -17,31 +25,21 @@ pub fn back_print(
   p : Int,
   q : Int
 ) -> String {
-  let front_str = central_print(
-    width,
-    {
-      let mut res = ""
-      for s in str {
-        if s != '\n' {
-          res = res + "\{s}"
-        }
+  let _str = {
+    let mut res = ""
+    for s in str {
+      if s != '\n' {
+        res = res + "\{s}"
       }
-      res
-    },
-    p,
-    q,
-  )
-  let l = real_len(front_str)
+      if s == '\r' {
+        res = ""
+      }
+    }
+    res
+  }
+  let l = real_len(_str)
   let offset = width / q * p - l / 2
-  // old-version
-  background + "\r\x1b[\{offset*2}C" + str
-
-  // background +
-  // // "\r" +
-  // front_str +
-  // "\r" +
-  // str_len_slice(background, 0, 2 * (width * 2 * p / q - l))
-
+  background + "\r\x1b[\{offset}C" + _str
 }
 
 ///|

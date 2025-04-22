@@ -397,17 +397,17 @@ pub fn func_cross_box(
   let x_max = max(p1.0, p2.0)
   let y_min = min(p1.1, p2.1)
   let y_max = max(p1.1, p2.1)
-  let dx = x_max - x_min
-  let cen1 = x_min + dx / 5.0
-  let cen2 = x_min + dx * 2.0 / 5.0
-  let cen3 = x_min + dx * 3.0 / 5.0
-  let cen4 = x_min + dx * 4.0 / 5.0
+  // let dx = x_max - x_min
+  // let cen1 = x_min + dx / 5.0
+  // let cen2 = x_min + dx * 2.0 / 5.0
+  // let cen3 = x_min + dx * 3.0 / 5.0
+  // let cen4 = x_min + dx * 4.0 / 5.0
   let tolerance = 0.0
-  if between(f(cen1), (y_min, y_max), tolerance) ||
-    between(f(cen2), (y_min, y_max), tolerance) ||
-    between(f(cen3), (y_min, y_max), tolerance) ||
-    between(f(cen4), (y_min, y_max), tolerance) ||
-    between(f(x_min), (y_min, y_max), tolerance) ||
+  // between(f(cen1), (y_min, y_max), tolerance) ||
+  //   between(f(cen2), (y_min, y_max), tolerance) ||
+  //   between(f(cen3), (y_min, y_max), tolerance) ||
+  //   between(f(cen4), (y_min, y_max), tolerance) ||
+  if between(f(x_min), (y_min, y_max), tolerance) ||
     between(f(x_max), (y_min, y_max), tolerance) ||
     (y_min - f(x_min)) * (f(x_max) - y_max) > 0 {
     return true

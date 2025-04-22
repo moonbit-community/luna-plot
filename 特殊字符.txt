@@ -1,0 +1,82 @@
+# 特殊字符类型总结
+
+## 1. Unicode 特殊字符
+
+### Box Drawing Characters (制表符)
+```
+┌─┐  █ ▀ ▄ ░ ▒ ▓ │ ┤ ╡ ╢ ╖ ╕ ╣ ║ ╗ ╝ ╜ ╛ ┐ └ ┴ ┬ ├ ─ ┼ ╞ ╟ ╚ ╔ ╩ ╦ ╠ ═ ╬ ╧ ╨ ╤ ╥ ╙ ╘ ╒ ╓ ╫ ╪ ┘ ┌
+```
+
+### Block Elements (方块元素)
+```
+█ ▀ ▄ ▌ ▐ ░ ▒ ▓ ■ □ ▢ ▣ ▤ ▥ ▦ ▧ ▨ ▩ ▪ ▫ ▬ ▭ ▮ ▯ ▰ ▱ ▲ ▼ ◄ ► ◆ ◇
+```
+
+### Geometric Shapes (几何图形)
+```
+● ○ ◐ ◑ ◒ ◓ ◔ ◕ ◖ ◗ ◘ ◙ ◚ ◛ ◜ ◝ ◞ ◟ ◠ ◡ ◢ ◣ ◤ ◥ ◦ ◧ ◨ ◩ ◪ ◫ ◬ ◭ ◮ ◯
+```
+
+### Mathematical Symbols (数学符号)
+```
+∀ ∁ ∂ ∃ ∄ ∅ ∆ ∇ ∈ ∉ ∊ ∋ ∌ ∍ ∎ ∏ ∐ ∑ ∓ ∔ ∕ ∖ ∗ ∘ ∙ √ ∛ ∜ ∝ ∞ ∟ ∠ ∡ ∢ ∣ ∤ ∥
+```
+
+### Arrows (箭头)
+```
+← ↑ → ↓ ↔ ↕ ↖ ↗ ↘ ↙ ↚ ↛ ↜ ↝ ↞ ↟ ↠ ↡ ↢ ↣ ↤ ↥ ↦ ↧ ↨ ↩ ↪ ↫ ↬ ↭ ↮ ↯
+```
+
+## 2. Zero-width Characters (零宽字符)
+
+```
+\u200B  零宽空格
+\u200C  零宽非连接符
+\u200D  零宽连接符
+\uFEFF  零宽不换行空格
+```
+
+## 3. Combining Characters (组合字符)
+```
+a\u0301  → á    (组合重音符)
+a\u0308  → ä    (组合变音符)
+a\u0303  → ã    (组合波浪符)
+```
+
+## 4. 方向控制字符
+```
+\u202A  LRE (Left-to-Right Embedding)
+\u202B  RLE (Right-to-Left Embedding)
+\u202C  PDF (Pop Directional Formatting)
+\u202D  LRO (Left-to-Right Override)
+\u202E  RLO (Right-to-Left Override)
+```
+
+## 使用示例
+
+````moonbit
+fn print_special_chars() {
+  // Box Drawing
+  println("┌───┐")
+  println("│ABC│")
+  println("└───┘")
+  
+  // Block Elements
+  println("Loading: █▀▄▌▐░▒▓")
+  
+  // Geometric Shapes
+  println("Status: ● ○ ◐ ◑")
+  
+  // Mathematical
+  println("Formula: ∑(x∈ℕ)")
+  
+  // Arrows
+  println("Navigation: ← ↑ → ↓")
+}
+````
+
+**注意事项：**
+1. 字符显示效果取决于终端和字体支持
+2. 某些特殊字符可能导致文本对齐问题
+3. 在处理这些字符时需要考虑字符宽度
+4. 建议在使用前测试目标环境的兼容性

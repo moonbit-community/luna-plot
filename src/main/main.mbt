@@ -11,15 +11,15 @@ fn main {
   let pattern = "҈"
   let str = "Ω\{s1}\{s2}\{s}" + "欢迎,终端宽度是\{wid}\{pattern}"
   println(
-    @lib.central_print(wid, str, 3, 4) + @lib.central_print(wid, str, 1, 4),
+    @lib.central_print(wid, str, 1, 4) + @lib.central_print(wid, str, 3, 4),
   )
   // Terminal-rain_effects output
-  println(@lib.rain_effects(1))
+  println("\x1b[2m" + @lib.rain_effects(1) + "\x1b[0m")
   // Basic-func plot
   // plot x² with axis
   @lib.plot(fn(x) { x * x }, (-10.0, 13.1415926), (-3, 10.0), wid, true)
   // // multi-func draw:for future view engine
-  let (func_view, func_h) = @lib.draw_(
+  let (func_view, func_h) = @lib.draw(
     [
       (fn(x) { x * x }, []),
       (f2, []),
@@ -47,18 +47,23 @@ fn main {
     ], //labels
   )
   @lib.cover_draw(
-    func_view,
-    // 0,
-    func_h / 3,
+    func_view, 0,
+    // func_h / 3,
   )
 
   // 3D draw
   let view_dis = 5.0
   // let eye_dis = view_dis / 10.0
   let view_box = @lib.set_box((-5.0, 16.0), (-1.0, 7.0))
-  // let mut view_frames = ""
+  let mut view_frames = ""
   for j in 0..<100 {
-    view(view_box, view_dis, wid * 3 / 2, hei / 4, j)
+    view(
+      view_box, view_dis, wid
+      //  * 3 / 2
+      , hei
+      // / 4
+      , j,
+    )
   }
   // println(@lib.spine_effects(wid, 10))
 }
@@ -134,7 +139,7 @@ fn view(
   // println(@lib.mul_str(100, "\x1b[A") + "\x1b[H")
   // let view_frame = 
   let j_ = j.to_double() / 5.0
-  let (view_frame, h) = @lib.draw_(
+  let (view_frame, h) = @lib.draw(
     [
       // ..@lib.make_column((5.0, 0.0, 0.0), 0.5, 0.2, view_dis),
       (f2, [@lib.set_box((0.0, 4.0), (0.0, 4.0))]),
@@ -163,6 +168,8 @@ fn view(
       (0.0, 4.0, "(0,4)"),
       (2.0, 2.0, "(2.0,2.0)"),
       (4.0, 4.0, "(4,4)"),
+      (1.0, 1.0, "(1,1)"),
+      (3.0, 3.0, "(3,3)"),
       (4.0, 0.0, "(4,0)"),
     ],
   )
